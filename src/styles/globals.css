@@ -9,6 +9,9 @@ html {
 p {
   @apply font-quicksand;
 }
+span {
+  @apply font-quicksand;
+}
 
 h1 {
   @apply font-antonio;
