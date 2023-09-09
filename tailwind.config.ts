@@ -8,6 +8,7 @@ export default {
       fontFamily: {
         quicksand: ["var(--font-quicksand)"],
         antonio: ["var(--font-antonio)"],
+        racing: ["var(--font-racing)"],
       },
       colors: {
         blue: "#141631",

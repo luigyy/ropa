@@ -6,6 +6,7 @@ import "~/styles/globals.css";
 import { api } from "~/utils/api";
 
 import { Antonio, Quicksand } from "next/font/google";
+import { Racing_Sans_One } from "next/font/google";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -18,13 +19,21 @@ const antonio = Antonio({
   variable: "--font-antonio",
 });
 
+const racing = Racing_Sans_One({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-racing",
+});
+
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={`${quicksand.variable} ${antonio.variable} `}>
+      <main
+        className={`${quicksand.variable} ${antonio.variable} ${racing.variable} `}
+      >
         <Component {...pageProps} />
       </main>
     </SessionProvider>

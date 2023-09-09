@@ -4,8 +4,37 @@ import Link from "next/link";
 import Button from "~/components/Button";
 import GarmentCard from "~/components/GarmentCard";
 import Navbar from "~/components/Navbar";
+import { BsCheckCircle, BsArrowReturnLeft } from "react-icons/bs";
+import { GiSeaTurtle } from "react-icons/gi";
 
 import { api } from "~/utils/api";
+
+const SquaredBanner = ({
+  image,
+  title,
+  text,
+  link,
+}: {
+  image: string;
+  title: string;
+  text: string;
+  link: string;
+}) => {
+  return (
+    <Link
+      href="#_"
+      className="relative aspect-[1.2] w-[40%] overflow-hidden hover:ring-4 hover:ring-orange "
+    >
+      {/* text  */}
+      <div className=" absolute  left-1/2 top-1/2 w-[60%] -translate-x-1/2  rounded-md  bg-black  bg-opacity-20 p-3">
+        <h1 className="mb-2 text-center text-3xl text-creme">{title}</h1>
+        <p className="text-center text-xl text-creme">{text}</p>
+      </div>
+      {/*end text  */}
+      <img src={image} className=" " alt="" />
+    </Link>
+  );
+};
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -19,6 +48,85 @@ export default function Home() {
       </Head>
       <main className="">
         <Navbar />
+        <div className=" h-[65vh]  overflow-hidden   ">
+          {/* *** */}
+          {/* first section  */}
+          <div className="absolute right-0 top-1/2 mr-10 -translate-y-1/2  ">
+            <h1 className="text-right font-racing text-6xl text-creme">
+              Atuendo de verano
+            </h1>
+            <p className="text-right font-semibold text-creme">01/01-28/01</p>
+            <h1 className="text-right font-racing text-7xl text-creme">
+              hasta <span className="font-racing text-orange">70% OFF</span>
+            </h1>
+          </div>
+          {/* *** */}
+          {/* end first section  */}
+
+          {/* bg image  */}
+          <img src="hero-image.jpg" className="relative -z-10" alt="" />
+        </div>
+        {/* *** */}
+        {/* indicadores  */}
+        <div className="my-10 flex  justify-around px-16">
+          <div className="flex flex-col  justify-center">
+            <BsCheckCircle className="mx-auto text-3xl text-orange" />
+            <h1 className="mt-1 text-center text-xl">Calidad Garantizada</h1>
+            <p className="mt-2 w-40 text-center text-sm">
+              Nuestra ropa, revisada meticulosamente, garantiza calidad y estado
+              óptimo.
+            </p>
+          </div>
+          <div className="flex flex-col  justify-center">
+            <BsArrowReturnLeft className="mx-auto text-3xl text-orange" />
+            <h1 className="mt-1 text-center text-xl">Devolución gratuita</h1>
+            <p className="mt-2 w-40 text-center text-sm">
+              Llevatela y pruebatela. Si no cumple tus expectativas, estamos
+              aquí para gestionar su devolución.
+            </p>
+          </div>
+          <div className="flex flex-col  justify-center">
+            <GiSeaTurtle className="mx-auto text-3xl text-orange" />
+            <h1 className="mt-1 text-center text-xl">Reduzca su impacto</h1>
+            <p className="mt-2 w-40 text-center text-sm">
+              Una prenda puede llegar a consumir hasta 3000 litros de agua.
+              Ahorra y ayuda!
+            </p>
+          </div>
+        </div>
+        {/*end indicadores  */}
+        {/* *** */}
+
+        {/* *** */}
+        {/* second section  */}
+        <div className="mb-10 flex flex-wrap justify-center gap-x-3 gap-y-3  ">
+          <SquaredBanner
+            image="halloween-image.png"
+            link="#_"
+            title="Prendas  halloween"
+            text="Encuentre las piezas perfectas para su disfraz"
+          />{" "}
+          <SquaredBanner
+            image="dress-homepage-image.png"
+            link="#_"
+            title="hasta 70% en vestidos"
+            text="Encuentre lo mas trendy"
+          />{" "}
+          <SquaredBanner
+            image="barbie-image.png"
+            link="#_"
+            title="Be a Barbie Girl"
+            text="Prenda barbie a partir de 2500"
+          />{" "}
+          <SquaredBanner
+            image="vintage-image.png"
+            link="#_"
+            title="Stay Vintage"
+            text="Encuentre su estilo"
+          />
+        </div>
+        {/* end second section  */}
+        {/* *** */}
       </main>
     </>
   );
